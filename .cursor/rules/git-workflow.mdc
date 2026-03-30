@@ -1,0 +1,61 @@
+---
+description: Automatiza el registro en Git al completar fases o trabajo significativo del plan maestro
+alwaysApply: true
+---
+# Git Workflow — Registro Automático por Fase
+
+## Cuándo registrar en Git
+
+Después de completar cualquiera de estos eventos, **propón proactivamente** un commit + push:
+
+1. **Fin de fase completa** (F0, F1, F2...) del plan maestro
+2. **Fin de subtarea significativa** (ej. 1.5 migración BD, 2.3 componente SearchBar)
+3. **Fix de bug** que resuelve un problema reportado
+4. **Refactorización** que mejora la calidad del código
+
+## Flujo obligatorio
+
+```
+1. git add <archivos relevantes>
+2. git commit -m "tipo(alcance): descripción"
+3. git push origin <branch>
+```
+
+## Formato de commits
+
+```
+tipo(fase-N): descripción breve en español
+
+Qué cambió y por qué.
+```
+
+### Tipos permitidos
+- `feat(fase-N)`: funcionalidad nueva
+- `fix(fase-N)`: corrección de bug
+- `refactor(fase-N)`: reestructuración sin cambio funcional
+- `docs(fase-N)`: documentación
+- `chore(fase-N)`: configuración, setup, tooling
+- `test(fase-N)`: tests nuevos o actualizados
+
+### Ejemplos
+```
+chore(fase-0): evaluar Stitch y documentar decisión
+feat(fase-1): init Next.js 15 con Supabase y shadcn/ui
+feat(fase-2): implementar SearchBar con full-text search
+fix(fase-3): corregir cálculo de subtotales en cotización
+```
+
+## Checklist pre-commit
+
+Antes de cada commit, verificar:
+- [ ] No hay secretos (.env, tokens, API keys) en el código
+- [ ] `.gitignore` cubre archivos sensibles
+- [ ] Los archivos incluidos son relevantes al cambio
+- [ ] No hay código muerto nuevo
+
+## Comportamiento proactivo
+
+- **NO esperes** a que el usuario pida el commit
+- Al detectar fin de fase o subtarea, **propón**: "Hago commit y push de [descripción]?"
+- Si el usuario confirma, ejecuta el flujo completo (add → commit → push)
+- Después del push, **actualiza Linear** moviendo la issue correspondiente a Done

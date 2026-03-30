@@ -1,0 +1,29 @@
+---
+description: "Vibe Coding: manejo del contexto y memoria de sesión"
+alwaysApply: true
+---
+
+# Vibe Coding — Manejo del Contexto
+
+## Actualización de Memoria
+
+- Si aprendemos algo nuevo en la sesión o repetimos instrucciones, propón actualizar el documento de contexto (ej. reglas en `.cursor/rules/`) con los nuevos aprendizajes.
+- Si se descubren convenciones o decisiones arquitectónicas, documéntalas como reglas persistentes.
+
+## Limpieza de Sesión
+
+- Si el usuario va a cambiar a una tarea no relacionada, recomienda limpiar el contexto y empezar un chat nuevo para ahorrar tokens y mejorar resultados.
+- Evita arrastrar contexto irrelevante de tareas anteriores.
+
+## Regla de los 3 Fallos
+
+- Si fallas en resolver un problema después de **3 intentos**, detente y recomienda:
+  1. Empezar un chat fresco con contexto limpio
+  2. Replantear el enfoque desde cero
+  3. Buscar documentación o recursos externos
+- No insistas con el mismo enfoque que ya falló.
+
+## Foco
+
+- Mantén la conversación enfocada en la tarea actual.
+- Si el alcance crece demasiado, propón dividir en subtareas y abordarlas una por una.

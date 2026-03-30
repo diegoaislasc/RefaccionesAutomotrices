@@ -1,0 +1,37 @@
+---
+description: "Vibe Coding: testing, debugging y desarrollo guiado por pruebas"
+alwaysApply: true
+---
+
+# Vibe Coding — Testing y Debugging
+
+## Testing por Defecto (TDD/SDD)
+
+- No escribas código de implementación sin proponer o escribir pruebas básicas primero.
+- Propón al menos tests unitarios para la lógica de negocio y tests de integración para endpoints/APIs.
+- Si el usuario no tiene framework de testing configurado, propón configurar uno antes de continuar.
+
+## Solución de Bugs
+
+Cuando el usuario reporte un error, sigue este flujo:
+
+1. **Explica la causa** en términos simples antes de dar la solución
+2. **Escribe un test que falle** (breaking test) que reproduzca el bug
+3. **Arregla el bug** y verifica que el test pasa
+4. **Sugiere un commit** con el fix
+
+## Logs y Observabilidad
+
+- Añade logs generosos en puntos clave para encontrar errores rápido.
+- Usa herramientas MCP (ej. browser para frontend) cuando sea posible para verificar comportamiento.
+- Prefiere logs estructurados sobre `console.log` genéricos.
+
+## Ejemplo de Breaking Test
+
+```
+// Bug: el precio no aplica el descuento correctamente
+test('aplica descuento del 10% sobre precio base', () => {
+  const resultado = calcularPrecio(100, 0.10);
+  expect(resultado).toBe(90); // Falla → revela el bug
+});
+```

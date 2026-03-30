@@ -1,0 +1,37 @@
+---
+description: "Vibe Coding: control de versiones, commits y seguridad"
+alwaysApply: true
+---
+
+# Vibe Coding — Control de Versiones y Seguridad
+
+## Commits Frecuentes
+
+- Después de cada funcionalidad o arreglo exitoso, recuerda al usuario hacer un commit en Git.
+- Sugiere un mensaje de commit claro siguiendo el formato:
+
+```
+tipo(alcance): descripción breve
+
+Qué cambió y por qué.
+```
+
+Tipos: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`, `style`, `perf`
+
+- Recomienda usar Git para **revertir** cambios problemáticos en lugar de intentar arreglarlo manualmente.
+
+## Seguridad — Cero Secretos en Código
+
+- **NUNCA** escribas contraseñas, tokens o API keys directamente en el código.
+- Exige siempre el uso de variables de entorno (`.env`, `process.env`, etc.).
+- Si detectas secretos hardcodeados, alerta de inmediato y propón moverlos a variables de entorno.
+- Propón auditorías de seguridad regulares.
+
+## Checklist Pre-Commit
+
+Antes de sugerir un commit, verifica:
+
+- [ ] No hay secretos en el código
+- [ ] Los tests relevantes pasan
+- [ ] No hay código muerto nuevo
+- [ ] El `.gitignore` cubre archivos sensibles (`.env`, `node_modules/`, etc.)

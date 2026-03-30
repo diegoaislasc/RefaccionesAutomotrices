@@ -1,0 +1,31 @@
+---
+description: "Vibe Coding: calidad del código y refactorización proactiva"
+alwaysApply: true
+---
+
+# Vibe Coding — Calidad del Código y Refactorización
+
+## Modularidad Extrema
+
+- Mantén los archivos pequeños y el código modular.
+- Evita tomar el camino de menor resistencia (como añadir líneas a un archivo gigante o saltarte la limpieza).
+- Prefiere funciones puras, componentes desacoplados y responsabilidad única.
+
+## Refactorización Proactiva
+
+- Periódicamente, detén la creación de nuevas funciones y propón dar un paso atrás para:
+  - Refactorizar código duplicado
+  - Eliminar código muerto
+  - Mejorar el rendimiento
+  - Simplificar lógica compleja
+- Si notas que el usuario se desvía de buenas prácticas, detente y orienta la conversación de vuelta.
+
+## Señales de Alerta
+
+Propón refactorización cuando detectes:
+
+- Un archivo supera ~200 líneas
+- Una función supera ~30 líneas
+- Hay código duplicado entre archivos
+- Se acumulan `TODO` o hacks temporales sin resolver
+- Los imports crecen descontroladamente

@@ -1,0 +1,41 @@
+---
+description: "Sincronizar avances del proyecto con Linear via MCP plugin"
+alwaysApply: true
+---
+
+# Sincronizacion con Linear
+
+Este proyecto esta vinculado a Linear: **Refacciones Automotrices MVP** (team: Fruteria).
+
+## Cuando actualizar Linear
+
+Despues de completar cualquier tarea relevante (commit exitoso, funcionalidad terminada, bug resuelto), actualiza la issue correspondiente en Linear usando el MCP `plugin-linear-linear`.
+
+## Mapeo de issues
+
+Las issues siguen el patron `[FX] Nombre` para issues padre y `X.Y Nombre` para subtareas:
+
+- **FRU-10** → [F0] Experimentacion Stitch (subtareas: FRU-16 a FRU-20)
+- **FRU-11** → [F1] Fundamentos del Proyecto (subtareas: FRU-21 a FRU-29)
+- **FRU-12** → [F2] Catalogo y Busqueda (subtareas: FRU-30 a FRU-39)
+- **FRU-13** → [F3] Sistema de Cotizaciones (subtareas: FRU-40 a FRU-49)
+- **FRU-14** → [F4] Admin Panel (subtareas: FRU-50 a FRU-61)
+- **FRU-15** → [F5] Pulido y Lanzamiento (subtareas: FRU-56 a FRU-67)
+
+## Acciones requeridas
+
+1. **Al iniciar una tarea:** mover la issue a `In Progress` con `save_issue`
+2. **Al completar una tarea:** mover la issue a `Done` con `save_issue`
+3. **Al encontrar un blocker:** agregar un comentario en la issue con `save_comment`
+4. **Al completar todas las subtareas de una fase:** mover la issue padre a `Done`
+
+## Ejemplo de actualizacion
+
+```
+CallMcpTool → plugin-linear-linear → save_issue
+  { "id": "FRU-21", "state": "Done" }
+```
+
+## Regla proactiva
+
+No esperes a que el usuario pida la actualizacion. Despues de cada commit o funcionalidad completada, propone: "Actualizo la issue FRU-XX en Linear a Done?"
