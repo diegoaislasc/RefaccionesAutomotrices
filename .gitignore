@@ -1,50 +1,44 @@
-# Dependencies
-node_modules/
-.pnp
-.pnp.js
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
-# Next.js
-.next/
-out/
+# testing
+/coverage
 
-# Build
-dist/
-build/
+# next.js
+/.next/
+/out/
 
-# Debug
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# cursor conversation history (may contain secrets)
+.specstory/
+
+# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
 
-# IDE / Editor
-.vscode/
-.idea/
-*.swp
-*.swo
+# env files (can opt-in for committing if needed)
+.env*
 
-# Cursor (local settings, no compartir)
-.cursor/settings.json
-.cursor/plans/
-
-# Specstory (historial de sesiones, no compartir)
-.specstory/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Supabase (local)
-supabase/.temp/
-
-# Vercel
+# vercel
 .vercel
 
-# Testing
-coverage/
+# typescript
+*.tsbuildinfo
+next-env.d.ts
