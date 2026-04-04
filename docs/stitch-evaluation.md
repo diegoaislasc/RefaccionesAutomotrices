@@ -1,5 +1,7 @@
 # Evaluación de Stitch (Google Labs) — Fase 0
 
+**Flujo de diseno en el repo:** ver `.stitch/DESIGN.md`, `.stitch/SITE.md` y la skill `.cursor/skills/stitch-design/SKILL.md` (prompts alineados a la landing Next.js).
+
 **Fecha:** 2026-03-30
 **Proyecto Stitch:** RefaccionesAutomotrices (ID: 12594010196170838033)
 **Proyecto GCP:** refacciones-mvp

@@ -1,0 +1,6 @@
+{
+  "projectId": "12594010196170838033",
+  "title": "RefaccionesAutomotrices",
+  "gcpProject": "refacciones-mvp",
+  "notes": "IDs de pantallas generadas en F0: ver docs/stitch-evaluation.md. Tras nuevas generaciones, actualiza projectId con list_projects / get_project si cambias de proyecto."
+}

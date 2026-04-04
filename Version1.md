@@ -1,7 +1,7 @@
 # Refacciones Automotrices MVP — Version 1
 
 > Documento vivo. El agente lo lee al iniciar sesion y lo actualiza conforme avanza el trabajo.
-> Ultima actualizacion: 2026-04-04 (demo catalogo cliente)
+> Ultima actualizacion: 2026-04-04 (skill stitch-design + .stitch/)
 
 ## Estado general
 
@@ -86,6 +86,9 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 | `supabase/migrations/003_quotes.sql` | Esquema cotizaciones + RLS |
 | `supabase/migrations/004_demo_articulos_cliente.sql` | Seed demo 200 articulos (presentacion cliente) |
 | `src/components/ui/button-variants.ts` | Variantes CVA de boton usables en Server Components |
+| `.cursor/skills/stitch-design/SKILL.md` | Skill: diseno landings con Stitch MCP (este repo) |
+| `.stitch/DESIGN.md` | Tokens + bloque obligatorio para prompts Stitch |
+| `.stitch/SITE.md` | Mapa landings / rutas Next vs pantallas Stitch |
 | `src/types/database.ts` | Tipos TS generados del esquema |
 | `supabase/migrations/001_initial_schema.sql` | Esquema SQL inicial |
 | `supabase/migrations/002_search_rpc.sql` | RPC busqueda full-text + filtros |
@@ -236,3 +239,4 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 | 2026-04-03 | F3: carrito Zustand, `submitQuote`, `/cotizacion`, `/confirmacion`, migracion `003_quotes.sql`, badge header, Resend opcional, tests `quote-validation`. Aplicar 003 en Supabase y `SUPABASE_SERVICE_ROLE_KEY` en Vercel para confirmacion. |
 | 2026-04-04 | Demo cliente: migracion `004_demo_articulos_cliente.sql` (200 productos articulo1..200, SKU DEMO-ART-*). Landing con seccion "Vista previa del catalogo" (12 tarjetas + enlace a `/buscar`). |
 | 2026-04-04 | Fix produccion: `buttonVariants` movido a `button-variants.ts` (sin `"use client"`) para evitar 500 en `/` al importar estilos desde Server Components. |
+| 2026-04-04 | Skill `stitch-design` en `.cursor/skills/` + carpeta `.stitch/` (DESIGN.md, SITE.md, metadata, designs/) para landings con Stitch MCP. |
