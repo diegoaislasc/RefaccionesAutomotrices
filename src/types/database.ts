@@ -208,6 +208,28 @@ export type Database = {
     }
     Functions: {
       unaccent: { Args: { "": string }; Returns: string }
+      search_products: {
+        Args: {
+          search_query?: string
+          category_slug?: string | null
+          brand_slugs?: string | null
+          min_price?: number | null
+          max_price?: number | null
+          page_limit?: number
+          page_offset?: number
+        }
+        Returns: Database["public"]["Tables"]["products"]["Row"][]
+      }
+      count_search_products: {
+        Args: {
+          search_query?: string
+          category_slug?: string | null
+          brand_slugs?: string | null
+          min_price?: number | null
+          max_price?: number | null
+        }
+        Returns: number
+      }
     }
     Enums: {
       [_ in never]: never

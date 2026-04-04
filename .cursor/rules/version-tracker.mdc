@@ -1,0 +1,32 @@
+---
+description: "Leer y actualizar Version1.md al inicio de cada sesion y tras cada avance"
+alwaysApply: true
+---
+
+# Version Tracker
+
+El archivo `Version1.md` en la raiz del proyecto es la fuente de verdad del estado del MVP.
+
+## Al iniciar sesion
+
+1. **Leer** `Version1.md` para entender el estado actual del proyecto.
+2. Identificar la **fase activa** y la **siguiente subtarea pendiente**.
+3. Mencionar brevemente al usuario en que punto estamos antes de comenzar a trabajar.
+
+## Al completar trabajo
+
+Despues de cada avance significativo (subtarea completada, commit, deploy, decision tecnica), actualizar `Version1.md`:
+
+1. Cambiar el **Estado** de la subtarea a `In Progress` o `Done` en la tabla correspondiente.
+2. Si la fase cambia de estado, actualizar la tabla de **Estado general** (cambiar Backlog → In Progress → Done y registrar la fecha de completado).
+3. Actualizar la linea **Fase activa** para reflejar la fase actual.
+4. Si se agrega una dependencia, herramienta o decision relevante, actualizar las secciones **Tech stack**, **Archivos clave** o **Decisiones tomadas**.
+5. Agregar una entrada al **Changelog** con fecha y descripcion breve del cambio.
+6. Actualizar la linea **Ultima actualizacion** en la cabecera.
+
+## Reglas de escritura
+
+- Mantener el formato Markdown existente (tablas, encabezados, separadores).
+- No eliminar secciones ni columnas — solo agregar o modificar contenido.
+- Los estados validos son: `Backlog`, `In Progress`, `Done`, `Blocked`.
+- Usar `StrReplace` para ediciones quirurgicas, no reescribir el archivo completo.

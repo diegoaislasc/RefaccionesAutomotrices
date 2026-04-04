@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { Search, Wrench, Zap, Gauge, CircuitBoard } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Wrench, Zap, Gauge, CircuitBoard } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { SearchBar } from "@/components/search/search-bar";
 import { createClient } from "@/lib/supabase/server";
 
 const categoryIcons: Record<string, React.ReactNode> = {
@@ -35,21 +34,12 @@ export default async function Home() {
               Cotiza en linea y recibe atencion personalizada.
             </p>
 
-            {/* Search bar */}
-            <form action="/buscar" method="GET" className="mt-8 flex gap-2">
-              <div className="relative flex-1">
-                <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-400" />
-                <Input
-                  type="search"
-                  name="q"
-                  placeholder="Buscar por nombre, SKU o numero de parte..."
-                  className="h-12 rounded-xl border-zinc-700 bg-zinc-800 pl-12 text-white placeholder:text-zinc-500 focus-visible:ring-red-500"
-                />
-              </div>
-              <Button type="submit" size="lg" className="h-12 rounded-xl bg-red-600 px-6 hover:bg-red-700">
-                Buscar
-              </Button>
-            </form>
+            <div className="mt-8 text-left">
+              <SearchBar
+                variant="hero"
+                className="[&_input]:border-zinc-700 [&_input]:bg-zinc-800 [&_input]:text-white [&_input]:placeholder:text-zinc-500 [&_button]:bg-red-600 [&_button]:hover:bg-red-700"
+              />
+            </div>
           </div>
         </div>
       </section>

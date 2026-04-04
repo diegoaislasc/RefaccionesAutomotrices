@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { SearchBar } from "@/components/search/search-bar";
 
 export function Header() {
   return (
@@ -15,13 +14,8 @@ export function Header() {
           </span>
         </Link>
 
-        <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Buscar refacciones..."
-            className="pl-9 h-9"
-          />
+        <div className="relative min-w-0 flex-1 max-w-md">
+          <SearchBar variant="compact" />
         </div>
 
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
