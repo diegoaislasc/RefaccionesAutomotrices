@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { useSearch } from "@/hooks/use-search";
 import Link from "next/link";
 
-type Variant = "hero" | "compact";
+type Variant = "hero" | "compact" | "landing";
 
 type SearchBarProps = {
   variant?: Variant;
@@ -27,6 +27,7 @@ export function SearchBar({
   const [open, setOpen] = useState(false);
 
   const isHero = variant === "hero";
+  const isLanding = variant === "landing";
 
   const submit = useCallback(
     (q: string) => {
@@ -46,12 +47,20 @@ export function SearchBar({
 
   return (
     <div className={cn("relative", className)}>
-      <form onSubmit={onFormSubmit} className="flex gap-2">
-        <div className="relative flex-1">
+      <form
+        onSubmit={onFormSubmit}
+        className={cn(
+          "flex gap-2",
+          isLanding && "flex-col md:flex-row md:items-stretch"
+        )}
+      >
+        <div className="relative min-w-0 flex-1">
           <Search
             className={cn(
               "absolute top-1/2 -translate-y-1/2 text-muted-foreground",
-              isHero ? "left-4 h-5 w-5" : "left-3 h-4 w-4"
+              isLanding && "left-4 h-5 w-5 text-zinc-400",
+              isHero && !isLanding && "left-4 h-5 w-5",
+              !isHero && !isLanding && "left-3 h-4 w-4"
             )}
           />
           <Input
@@ -59,9 +68,11 @@ export function SearchBar({
             name="q"
             autoComplete="off"
             placeholder={
-              isHero
-                ? "Buscar por nombre, SKU o numero de parte..."
-                : "Buscar refacciones..."
+              isLanding
+                ? "Busca por pieza, marca o modelo..."
+                : isHero
+                  ? "Buscar por nombre, SKU o numero de parte..."
+                  : "Buscar refacciones..."
             }
             value={query}
             onChange={(e) => {
@@ -73,21 +84,34 @@ export function SearchBar({
               window.setTimeout(() => setOpen(false), 150);
             }}
             className={cn(
-              isHero
-                ? "h-12 rounded-xl pl-12 text-base"
-                : "h-9 pl-9"
+              isLanding &&
+                "h-12 rounded-xl border-0 bg-transparent pl-12 text-base text-white shadow-none ring-0 placeholder:text-zinc-500 focus-visible:ring-0",
+              isHero &&
+                !isLanding &&
+                "h-12 rounded-xl pl-12 text-base",
+              !isHero && !isLanding && "h-9 pl-9"
             )}
           />
           {loading && (
             <Loader2
               className={cn(
                 "absolute top-1/2 h-4 w-4 -translate-y-1/2 animate-spin text-muted-foreground",
-                isHero ? "right-4" : "right-3"
+                isLanding && "right-4 text-zinc-400",
+                isHero && !isLanding && "right-4",
+                !isHero && !isLanding && "right-3"
               )}
             />
           )}
         </div>
-        <Button type="submit" size={isHero ? "lg" : "default"} className={cn(isHero && "h-12 rounded-xl")}>
+        <Button
+          type="submit"
+          size={isHero || isLanding ? "lg" : "default"}
+          className={cn(
+            (isHero || isLanding) && "h-12 shrink-0 rounded-xl",
+            isLanding &&
+              "border-0 bg-[#b61722] font-bold text-white hover:bg-[#da3437]"
+          )}
+        >
           Buscar
         </Button>
       </form>

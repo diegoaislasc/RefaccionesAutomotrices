@@ -1,7 +1,7 @@
 # Refacciones Automotrices MVP — Version 1
 
 > Documento vivo. El agente lo lee al iniciar sesion y lo actualiza conforme avanza el trabajo.
-> Ultima actualizacion: 2026-04-04 (Stitch landing Precision 2026)
+> Ultima actualizacion: 2026-04-04 (landing Precision traducida a Next.js)
 
 ## Estado general
 
@@ -42,7 +42,7 @@
 | URL produccion | https://refaccionesautomotrices-pepe.vercel.app |
 | Supabase project | `beligivdpgnybboujazw` (us-east-1) |
 | Linear project | Refacciones Automotrices MVP (team: Fruteria) |
-| Variables de entorno | `.env.local` (gitignored) — `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`; opcional cotizacion/email: `RESEND_API_KEY`, `QUOTE_NOTIFY_EMAIL`, `RESEND_FROM` |
+| Variables de entorno | `.env.local` (gitignored) — `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`; opcional: `NEXT_PUBLIC_WHATSAPP_URL` (enlace wa.me); cotizacion/email: `RESEND_API_KEY`, `QUOTE_NOTIFY_EMAIL`, `RESEND_FROM` |
 
 ## Base de datos
 
@@ -69,11 +69,13 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 
 | Archivo | Proposito |
 |---------|-----------|
-| `src/app/layout.tsx` | Layout raiz (Header + Footer + Inter font) |
-| `src/app/page.tsx` | Landing (hero + search + category cards desde Supabase) |
-| `src/app/globals.css` | Tailwind imports + theme CSS variables |
-| `src/components/layout/header.tsx` | Header sticky (logo RA, search, nav) |
-| `src/components/layout/footer.tsx` | Footer (copyright, WhatsApp, telefono) |
+| `src/app/layout.tsx` | Layout raiz (`main` con `pt-16` por header fijo) |
+| `src/app/page.tsx` | Landing estilo Stitch Precision (hero + imagen, trust strip, categorias Supabase, bloque valor, CTA WhatsApp) |
+| `src/app/globals.css` | Tailwind + `.blueprint-grid-dots` (rejilla hero) |
+| `next.config.ts` | `images.remotePatterns` para hero (googleusercontent) |
+| `src/lib/site.ts` | `whatsAppHref` / `whatsAppMessageHref` (fallback placeholder) |
+| `src/components/layout/header.tsx` | Header fijo (wordmark, nav, SearchBar compact, boton Cotizar) |
+| `src/components/layout/footer.tsx` | Footer oscuro multipilar (enlaces reales) |
 | `src/lib/supabase/client.ts` | Supabase browser client tipado |
 | `src/lib/supabase/server.ts` | Supabase server client con cookies |
 | `src/lib/supabase/service.ts` | Cliente service role (confirmacion cotizacion, bypass RLS) |
@@ -241,3 +243,4 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 | 2026-04-04 | Fix produccion: `buttonVariants` movido a `button-variants.ts` (sin `"use client"`) para evitar 500 en `/` al importar estilos desde Server Components. |
 | 2026-04-04 | Skill `stitch-design` en `.cursor/skills/` + carpeta `.stitch/` (DESIGN.md, SITE.md, metadata, designs/) para landings con Stitch MCP. |
 | 2026-04-04 | Stitch: nueva landing desktop "Precision Core" (screen `a3f16aab…`), artefactos en `.stitch/designs/landing-precision-2026.*`. |
+| 2026-04-04 | UI produccion alineada al mockup Precision: `page.tsx` (hero `next/image`, SearchBar `variant="landing"`), header fijo + boton Cotizar, footer multipilar, `src/lib/site.ts` para WhatsApp, `next.config` remotePatterns. |

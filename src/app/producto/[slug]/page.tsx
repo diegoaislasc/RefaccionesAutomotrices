@@ -6,6 +6,7 @@ import { AddToQuoteButton } from "@/components/quote/add-to-quote-button";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { whatsAppMessageHref } from "@/lib/site";
 import type { Json } from "@/types/database";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -77,10 +78,9 @@ export default async function ProductoPage({ params }: PageProps) {
   const compat = compatRows ?? [];
   const specsRows = specsEntries(product.specs);
 
-  const waText = encodeURIComponent(
+  const waHref = whatsAppMessageHref(
     `Hola, me interesa: ${product.name} (${product.sku ?? product.slug})`
   );
-  const waHref = `https://wa.me/521XXXXXXXXXX?text=${waText}`;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
