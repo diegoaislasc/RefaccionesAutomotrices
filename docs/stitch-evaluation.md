@@ -21,6 +21,7 @@ Stitch genera HTML con Tailwind CSS de alta calidad visual. Sin embargo, el outp
 
 | Pantalla | Screen ID | Calidad Visual | Calidad Código |
 |---|---|---|---|
+| Landing Precision 2026 (industrial) | `a3f16aab5a3b4c48aa9ec6f1438724ca` | Alta | Media (referencia) |
 | Landing Page | `e16e35f1653e44a0b6d12a4f6dc1c715` | Alta | Media |
 | Resultados de Búsqueda | `03ecfbf921244a0aa4616718bcaa37b0` | Alta | Media |
 | Detalle de Producto | `7e1d9511f11b4c2883f593c09fde13d4` | Alta | Media |

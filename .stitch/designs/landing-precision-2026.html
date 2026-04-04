@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#fbf8fc",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "on-primary-fixed-variant": "#930013",
+                    "on-secondary-fixed-variant": "#47464a",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#1b1b1e",
+                    "on-secondary-container": "#656467",
+                    "primary-container": "#da3437",
+                    "surface-container": "#f0edf1",
+                    "secondary-fixed": "#e4e1e6",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#fdfcff",
+                    "tertiary": "#4d5d73",
+                    "secondary-container": "#e4e1e6",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#b91a24",
+                    "tertiary-fixed": "#d3e4fe",
+                    "inverse-surface": "#303033",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "surface-container-low": "#f6f2f7",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#410004",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "outline-variant": "#e4beba",
+                    "surface-container-highest": "#e4e1e6",
+                    "primary": "#b61722",
+                    "surface-container-high": "#eae7eb",
+                    "on-surface": "#1b1b1e",
+                    "tertiary-container": "#66768d",
+                    "on-surface-variant": "#5b403e",
+                    "surface": "#fbf8fc",
+                    "surface-variant": "#e4e1e6",
+                    "secondary": "#5f5e61",
+                    "on-background": "#1b1b1e",
+                    "surface-dim": "#dcd9dd",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#c8c5ca",
+                    "outline": "#8f6f6d",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#ffdad7",
+                    "inverse-on-surface": "#f3f0f4",
+                    "background": "#fbf8fc",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "inverse-primary": "#ffb3ad",
+                    "on-primary-container": "#fffbff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .blueprint-grid {
+            background-image: radial-gradient(circle, rgba(228, 190, 186, 0.1) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/20">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 bg-surface/70 dark:bg-zinc-950/70 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter text-zinc-900 dark:text-zinc-50">RA Refacciones</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-red-600 dark:text-red-500 font-bold border-b-2 border-red-600" href="#">Catalogo</a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-400 transition-colors" href="#">Cotizacion</a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-400 transition-colors" href="#">Contacto</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 text-zinc-600 hover:opacity-80 transition-opacity">search</button>
+<button class="bg-primary text-on-primary px-5 py-2 rounded-xl font-bold hover:opacity-80 transition-opacity scale-95 active:scale-90 transition-transform">Cotizar</button>
+</div>
+</div>
+<div class="bg-zinc-200/20 dark:bg-zinc-800/20 h-[1px]"></div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[870px] flex items-center pt-20 overflow-hidden bg-zinc-950">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<img alt="Heavy engine bay" class="w-full h-full object-cover opacity-40" data-alt="Cinematic low-angle shot of a powerful truck diesel engine with metallic textures and professional industrial lighting in a dark workshop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8XWRAYLxFxHOmSmesoYb3v75NhQNc8LqPcapn2dLz_kkEYtF6kHn4HU0WNKBnsHQM97ZFRgKXUdjpg6Gg7PbPlJVzucTuJ_VQe1BHZgK30OvF9hhfeYvicv0XO7XWE2b4yRQdXyzDLql4XTW5kahi_L-Xs-lnkQxGRg0zTUwNy5uK1WlLElu_Q7Qt07d-ZDJ12eQTcQvjmBP3UAkg02CD8h7GWK2H86VlIQwVTjsbfcvPvGLvvnAKSZsfcmpMAVZqQyV_3c_-KmQj"/>
+<div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent"></div>
+<div class="absolute inset-0 blueprint-grid opacity-20"></div>
+</div>
+<div class="relative z-10 w-full max-w-screen-2xl mx-auto px-6 py-20 lg:py-32">
+<div class="max-w-3xl">
+<h1 class="text-white font-extrabold tracking-tighter text-5xl md:text-7xl mb-6 leading-tight">
+                        Refacciones que mantienen tu flota en movimiento.
+                    </h1>
+<p class="text-zinc-400 text-xl md:text-2xl mb-10 font-regular">
+                        Servicio especializado para maquinaria pesada y automotriz. Precisión garantizada.
+                    </p>
+<!-- Wide Search Bar -->
+<div class="flex flex-col md:flex-row gap-2 bg-white/10 backdrop-blur-md p-2 rounded-xl max-w-2xl border border-white/5">
+<div class="flex-grow flex items-center px-4 gap-3">
+<span class="material-symbols-outlined text-zinc-400">search</span>
+<input class="bg-transparent border-none text-white w-full focus:ring-0 placeholder:text-zinc-500" placeholder="Busca por pieza, marca o modelo..." type="text"/>
+</div>
+<button class="bg-primary hover:bg-primary-container text-white px-8 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            Buscar
+                        </button>
+</div>
+<a class="inline-block mt-6 text-zinc-300 hover:text-primary transition-colors font-semibold flex items-center gap-2 group" href="#">
+                        Ver catalogo completo 
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Trust Strip -->
+<section class="bg-zinc-900 py-6">
+<div class="max-w-screen-2xl mx-auto px-6 overflow-x-auto">
+<div class="flex items-center justify-between gap-8 min-w-max text-zinc-400 text-sm font-bold uppercase tracking-widest">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">local_shipping</span>
+                        Envio nacional
+                    </div>
+<div class="h-4 w-px bg-zinc-800"></div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">request_quote</span>
+                        Cotizacion en linea
+                    </div>
+<div class="h-4 w-px bg-zinc-800"></div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">support_agent</span>
+                        Soporte especializado
+                    </div>
+<div class="h-4 w-px bg-zinc-800"></div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">verified</span>
+                        Garantia de fabrica
+                    </div>
+</div>
+</div>
+</section>
+<!-- Categories Section -->
+<section class="py-24 bg-surface">
+<div class="max-w-screen-2xl mx-auto px-6">
+<div class="mb-16">
+<span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Sistemas principales</span>
+<h2 class="text-4xl md:text-5xl font-bold tracking-tight text-on-surface">Explora por categoría</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Frenos -->
+<div class="group bg-surface-container-lowest p-8 rounded-xl transition-all duration-300 hover:bg-surface-bright hover:-translate-y-1">
+<div class="w-12 h-12 mb-6 flex items-center justify-center rounded-lg bg-surface-container text-zinc-900 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">album</span>
+</div>
+<h3 class="text-2xl font-bold mb-3">Frenos</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">Componentes de alta fricción para sistemas de frenado pesado.</p>
+<div class="h-1 w-0 bg-primary group-hover:w-full transition-all duration-300"></div>
+</div>
+<!-- Motor -->
+<div class="group bg-surface-container-lowest p-8 rounded-xl transition-all duration-300 hover:bg-surface-bright hover:-translate-y-1">
+<div class="w-12 h-12 mb-6 flex items-center justify-center rounded-lg bg-surface-container text-zinc-900 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">settings_input_component</span>
+</div>
+<h3 class="text-2xl font-bold mb-3">Motor</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">Pistones, válvulas y kits de reparación interna de precisión.</p>
+<div class="h-1 w-0 bg-primary group-hover:w-full transition-all duration-300"></div>
+</div>
+<!-- Suspensión -->
+<div class="group bg-surface-container-lowest p-8 rounded-xl transition-all duration-300 hover:bg-surface-bright hover:-translate-y-1">
+<div class="w-12 h-12 mb-6 flex items-center justify-center rounded-lg bg-surface-container text-zinc-900 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">trolley</span>
+</div>
+<h3 class="text-2xl font-bold mb-3">Suspensión</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">Amortiguación y soporte estructural para carga extrema.</p>
+<div class="h-1 w-0 bg-primary group-hover:w-full transition-all duration-300"></div>
+</div>
+<!-- Eléctrico -->
+<div class="group bg-surface-container-lowest p-8 rounded-xl transition-all duration-300 hover:bg-surface-bright hover:-translate-y-1">
+<div class="w-12 h-12 mb-6 flex items-center justify-center rounded-lg bg-surface-container text-zinc-900 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">bolt</span>
+</div>
+<h3 class="text-2xl font-bold mb-3">Eléctrico</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">Sensores, arneses y sistemas de gestión de energía.</p>
+<div class="h-1 w-0 bg-primary group-hover:w-full transition-all duration-300"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Value Block -->
+<section class="py-24 bg-surface-container-low overflow-hidden">
+<div class="max-w-screen-2xl mx-auto px-6">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="flex-1 lg:pr-12">
+<h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-8 leading-tight">
+                            Inventario confiable para servicio pesado y automotriz.
+                        </h2>
+<p class="text-xl text-on-surface-variant leading-relaxed font-regular">
+                            Nos enfocamos en la <span class="text-primary font-bold">precisión técnica</span> de cada componente. Entendemos que cada minuto que su maquinaria está detenida representa una pérdida. Por ello, garantizamos disponibilidad inmediata y calidad certificada.
+                        </p>
+</div>
+<div class="flex-1 w-full relative">
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-zinc-900 p-8 rounded-xl shadow-xl flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-primary text-4xl">inventory_2</span>
+<div>
+<div class="text-white text-5xl font-black tracking-tighter">+10k</div>
+<div class="text-zinc-400 text-sm font-bold uppercase tracking-widest mt-2">Referencias</div>
+</div>
+</div>
+<div class="bg-surface-container-highest p-8 rounded-xl flex flex-col justify-between aspect-square mt-8">
+<span class="material-symbols-outlined text-zinc-900 text-4xl">schedule</span>
+<div>
+<div class="text-zinc-900 text-5xl font-black tracking-tighter">24h</div>
+<div class="text-zinc-500 text-sm font-bold uppercase tracking-widest mt-2">Respuesta</div>
+</div>
+</div>
+</div>
+<!-- Blueprint decor element -->
+<div class="absolute -z-10 -bottom-12 -right-12 w-64 h-64 blueprint-grid opacity-30"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Mid-page CTA -->
+<section class="bg-zinc-950 py-20 border-t-2 border-primary relative overflow-hidden">
+<div class="max-w-screen-2xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+<h2 class="text-3xl md:text-5xl font-bold text-white mb-8">¿No encuentras la pieza?</h2>
+<button class="flex items-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white px-10 py-5 rounded-full font-bold text-lg transition-all scale-100 hover:scale-105 active:scale-95 shadow-lg">
+<svg class="w-7 h-7 fill-current" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.653a11.883 11.883 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+                    Escríbenos por WhatsApp
+                </button>
+</div>
+<!-- Geometric deco -->
+<div class="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 transform translate-x-1/2"></div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-zinc-900 dark:bg-zinc-950 w-full py-12 px-8 border-t border-zinc-800">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-screen-2xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="text-lg font-bold text-zinc-50 block mb-4">RA Refacciones</span>
+<p class="text-zinc-400 font-regular">Precisión técnica para motores y sistemas industriales de alto rendimiento.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-zinc-50 font-bold">Empresa</h4>
+<a class="text-zinc-500 hover:text-red-400 transition-colors" href="#">Sobre Nosotros</a>
+<a class="text-zinc-500 hover:text-red-400 transition-colors" href="#">Calidad</a>
+<a class="text-zinc-500 hover:text-red-400 transition-colors" href="#">Sucursales</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-zinc-50 font-bold">Enlaces</h4>
+<a class="text-zinc-500 hover:text-red-400 transition-colors" href="#">Catálogo</a>
+<a class="text-zinc-500 hover:text-red-400 transition-colors" href="#">Solicitar Cotización</a>
+<a class="text-zinc-500 hover:text-red-400 transition-colors" href="#">Preguntas Frecuentes</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-zinc-50 font-bold">Contacto</h4>
+<p class="text-zinc-500">Av. Industrial 450, CP 06700</p>
+<p class="text-zinc-500">+52 (55) 1234-5678</p>
+<p class="text-zinc-500">info@ra-refacciones.mx</p>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-12 pt-8 border-t border-zinc-800 flex justify-between items-center">
+<p class="text-zinc-400 font-regular">© 2024 Refacciones Automotrices. Precision Engineering Hub.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-zinc-500 hover:text-red-400 cursor-pointer">share</span>
+<span class="material-symbols-outlined text-zinc-500 hover:text-red-400 cursor-pointer">mail</span>
+</div>
+</div>
+</footer>
+</body></html>

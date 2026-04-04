@@ -25,8 +25,20 @@ Landing y flujos publicos de un catálogo de refacciones: busqueda, detalle, cot
 3. **No** pegar HTML de Stitch como produccion: traducir a componentes React + Tailwind + shadcn ya usados en el repo.
 4. Documentar decisiones breves en PR o en `docs/stitch-evaluation.md` si es evaluacion formal.
 
-## 5. Roadmap diseno (editable)
+## 5. Pantalla Stitch reciente (referencia)
 
+| Nombre local | Screen ID | Archivos |
+|--------------|-----------|----------|
+| Landing Precision 2026 | `a3f16aab5a3b4c48aa9ec6f1438724ca` | `.stitch/designs/landing-precision-2026.html` + `.png` |
+
+Design system generado en Stitch: **Precision Core** (tokens semanticos + guia *Precision Engineering Hub* en salida del agente). Ver tambien `metadata.json`.
+
+**Previsualizar HTML local:** `npx serve .stitch/designs` y abrir `/landing-precision-2026.html`.
+
+## 6. Roadmap diseno (editable)
+
+- [x] Variante landing premium industrial (Stitch, abr 2026)
+- [ ] Traducir a `src/app/page.tsx` (hero, trust strip, bloque valor, CTA WhatsApp)
 - [ ] Refinar landing (hero, prueba social, trust)
 - [ ] Variante mobile-first de busqueda
 - [ ] Landing marketing aparte del catalogo (opcional)

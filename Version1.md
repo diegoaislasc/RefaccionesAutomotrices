@@ -1,7 +1,7 @@
 # Refacciones Automotrices MVP — Version 1
 
 > Documento vivo. El agente lo lee al iniciar sesion y lo actualiza conforme avanza el trabajo.
-> Ultima actualizacion: 2026-04-04 (skill stitch-design + .stitch/)
+> Ultima actualizacion: 2026-04-04 (Stitch landing Precision 2026)
 
 ## Estado general
 
@@ -240,3 +240,4 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 | 2026-04-04 | Demo cliente: migracion `004_demo_articulos_cliente.sql` (200 productos articulo1..200, SKU DEMO-ART-*). Landing con seccion "Vista previa del catalogo" (12 tarjetas + enlace a `/buscar`). |
 | 2026-04-04 | Fix produccion: `buttonVariants` movido a `button-variants.ts` (sin `"use client"`) para evitar 500 en `/` al importar estilos desde Server Components. |
 | 2026-04-04 | Skill `stitch-design` en `.cursor/skills/` + carpeta `.stitch/` (DESIGN.md, SITE.md, metadata, designs/) para landings con Stitch MCP. |
+| 2026-04-04 | Stitch: nueva landing desktop "Precision Core" (screen `a3f16aab…`), artefactos en `.stitch/designs/landing-precision-2026.*`. |

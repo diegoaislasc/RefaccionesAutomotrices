@@ -18,7 +18,8 @@ Eres quien guia el **diseno con Google Stitch (MCP)** para este repo. El product
 
 ## MCP Stitch en este proyecto
 
-- Configuracion: **`.cursor/mcp.json`** (servidor `stitch`, `GOOGLE_CLOUD_PROJECT=refacciones-mvp`).
+- Configuracion: **`.cursor/mcp.json`** (entrada `stitch`, `GOOGLE_CLOUD_PROJECT=refacciones-mvp`).
+- En Cursor el servidor puede registrarse como **`project-0-RefaccionesAutomotrices-stitch`** (nombre interno), no como `stitch`. Usa el identificador que liste el IDE para `call_mcp_tool`.
 - Antes de la primera llamada, si no conoces los nombres exactos de herramientas, inspecciona el descriptor del servidor en el workspace.
 - **Reglas de las herramientas:**
   - `generate_screen_from_text` y `edit_screens` pueden tardar **varios minutos**: **no reintentar** de inmediato; si hay error de red, puede que la generacion siga en servidor — usar `get_screen` / `list_screens` despues.

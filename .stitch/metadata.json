@@ -2,5 +2,22 @@
   "projectId": "12594010196170838033",
   "title": "RefaccionesAutomotrices",
   "gcpProject": "refacciones-mvp",
-  "notes": "IDs de pantallas generadas en F0: ver docs/stitch-evaluation.md. Tras nuevas generaciones, actualiza projectId con list_projects / get_project si cambias de proyecto."
+  "notes": "Pantallas F0 en docs/stitch-evaluation.md. Nueva landing 2026-04-04: Precision Core + screen a3f16aab…",
+  "designSystems": {
+    "precision-core": {
+      "displayName": "Precision Core",
+      "assetName": "assets/846a9beea2ab47a88ded5781a9b57539"
+    }
+  },
+  "screens": {
+    "landing-precision-2026": {
+      "id": "a3f16aab5a3b4c48aa9ec6f1438724ca",
+      "title": "Refacciones Automotrices - Landing Page",
+      "width": 2560,
+      "height": 5686,
+      "deviceType": "DESKTOP",
+      "localHtml": ".stitch/designs/landing-precision-2026.html",
+      "localPng": ".stitch/designs/landing-precision-2026.png"
+    }
+  }
 }
