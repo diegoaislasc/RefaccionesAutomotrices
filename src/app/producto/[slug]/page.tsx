@@ -7,6 +7,7 @@ import { buttonVariants } from "@/components/ui/button-variants";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { whatsAppMessageHref } from "@/lib/site";
+import { getProductImageUrl } from "@/lib/product-image";
 import type { Json } from "@/types/database";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -50,7 +51,7 @@ export default async function ProductoPage({ params }: PageProps) {
 
   if (error || !product) notFound();
 
-  const imageUrl = product.images?.[0] ?? null;
+  const imageUrl = getProductImageUrl(product);
 
   const [{ data: brand }, { data: category }, { data: compatRows }] =
     await Promise.all([
@@ -110,18 +111,12 @@ export default async function ProductoPage({ params }: PageProps) {
       <div className="grid gap-10 lg:grid-cols-2">
         <div>
           <div className="aspect-square overflow-hidden rounded-lg border bg-muted">
-            {imageUrl ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={imageUrl}
-                alt=""
-                className="h-full w-full object-cover"
-              />
-            ) : (
-              <div className="flex h-full items-center justify-center text-muted-foreground">
-                Sin imagen
-              </div>
-            )}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={imageUrl}
+              alt={product.name}
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
 

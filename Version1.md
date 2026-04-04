@@ -63,6 +63,8 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 
 **Migracion 003 (cotizaciones):** `supabase/migrations/003_quotes.sql` — tablas `quotes`, `quote_items`, enum `quote_status`, RLS insert anon/authenticated sin SELECT publico.
 
+**Migracion 005 (imagenes ficticias):** `supabase/migrations/005_product_placeholder_images.sql` — rellena `products.images` con URL Picsum por `md5(slug)` si venia vacio. La app usa la misma semilla en `getProductImageUrl` cuando no hay foto.
+
 **Tipos TypeScript:** `src/types/database.ts` (alineados al esquema + RPC + cotizaciones)
 
 ## Archivos clave
@@ -74,6 +76,7 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 | `src/app/globals.css` | Tailwind + `.blueprint-grid-dots` (rejilla hero) |
 | `next.config.ts` | `images.remotePatterns` para hero (googleusercontent) |
 | `src/lib/site.ts` | `whatsAppHref` / `whatsAppMessageHref` (fallback placeholder) |
+| `src/lib/product-image.ts` | `getProductImageUrl` — foto real o placeholder Picsum estable por slug |
 | `src/components/layout/header.tsx` | Header fijo (wordmark, nav, SearchBar compact, boton Cotizar) |
 | `src/components/layout/footer.tsx` | Footer oscuro multipilar (enlaces reales) |
 | `src/lib/supabase/client.ts` | Supabase browser client tipado |
@@ -244,3 +247,4 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 | 2026-04-04 | Skill `stitch-design` en `.cursor/skills/` + carpeta `.stitch/` (DESIGN.md, SITE.md, metadata, designs/) para landings con Stitch MCP. |
 | 2026-04-04 | Stitch: nueva landing desktop "Precision Core" (screen `a3f16aab…`), artefactos en `.stitch/designs/landing-precision-2026.*`. |
 | 2026-04-04 | UI produccion alineada al mockup Precision: `page.tsx` (hero `next/image`, SearchBar `variant="landing"`), header fijo + boton Cotizar, footer multipilar, `src/lib/site.ts` para WhatsApp, `next.config` remotePatterns. |
+| 2026-04-04 | Imagenes ficticias de catalogo: `getProductImageUrl` (Picsum `seed=ra-md5(slug)`), migracion `005_product_placeholder_images.sql`, tests Vitest. |

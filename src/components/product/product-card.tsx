@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button-variants";
 import { Badge } from "@/components/ui/badge";
 import { AddToQuoteButton } from "@/components/quote/add-to-quote-button";
 import type { Tables } from "@/types/database";
+import { getProductImageUrl } from "@/lib/product-image";
 
 type ProductCardProps = {
   product: Tables<"products">;
@@ -12,24 +13,18 @@ type ProductCardProps = {
 };
 
 export function ProductCard({ product, brandName }: ProductCardProps) {
-  const imageUrl = product.images?.[0] ?? null;
+  const imageUrl = getProductImageUrl(product);
 
   return (
     <Card className="flex h-full flex-col overflow-hidden transition-shadow hover:shadow-md">
       <Link href={`/producto/${product.slug}`} className="block">
         <div className="relative aspect-square bg-muted">
-          {imageUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={imageUrl}
-              alt=""
-              className="h-full w-full object-cover"
-            />
-          ) : (
-            <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
-              Sin imagen
-            </div>
-          )}
+          {/* eslint-disable-next-line @next/next/no-img-element -- URLs externas de catálogo / Picsum */}
+          <img
+            src={imageUrl}
+            alt={product.name}
+            className="h-full w-full object-cover"
+          />
         </div>
       </Link>
       <CardHeader className="space-y-1 pb-2">
