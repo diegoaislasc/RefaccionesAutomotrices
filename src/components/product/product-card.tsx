@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { AddToQuoteButton } from "@/components/quote/add-to-quote-button";
 import type { Tables } from "@/types/database";
 
 type ProductCardProps = {
@@ -56,13 +57,25 @@ export function ProductCard({ product, brandName }: ProductCardProps) {
           {formatMx(product.price)}
         </p>
       </CardContent>
-      <CardFooter className="pt-0">
+      <CardFooter className="flex flex-col gap-2 pt-0 sm:flex-row">
         <Link
           href={`/producto/${product.slug}`}
-          className={cn(buttonVariants({ variant: "default" }), "w-full text-center")}
+          className={cn(
+            buttonVariants({ variant: "default" }),
+            "w-full flex-1 text-center"
+          )}
         >
           Ver detalle
         </Link>
+        <AddToQuoteButton
+          productId={product.id}
+          slug={product.slug}
+          name={product.name}
+          price={product.price}
+          imageUrl={imageUrl}
+          variant="outline"
+          className="w-full flex-1"
+        />
       </CardFooter>
     </Card>
   );

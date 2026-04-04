@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { CompatibilityTable } from "@/components/product/compatibility-table";
+import { AddToQuoteButton } from "@/components/quote/add-to-quote-button";
 import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -48,6 +49,8 @@ export default async function ProductoPage({ params }: PageProps) {
 
   if (error || !product) notFound();
 
+  const imageUrl = product.images?.[0] ?? null;
+
   const [{ data: brand }, { data: category }, { data: compatRows }] =
     await Promise.all([
       product.brand_id
@@ -73,7 +76,6 @@ export default async function ProductoPage({ params }: PageProps) {
 
   const compat = compatRows ?? [];
   const specsRows = specsEntries(product.specs);
-  const imageUrl = product.images?.[0] ?? null;
 
   const waText = encodeURIComponent(
     `Hola, me interesa: ${product.name} (${product.sku ?? product.slug})`
@@ -148,15 +150,14 @@ export default async function ProductoPage({ params }: PageProps) {
           )}
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/cotizacion"
-              className={cn(
-                buttonVariants({ variant: "default" }),
-                "justify-center text-center sm:flex-1"
-              )}
-            >
-              Agregar a cotizacion
-            </Link>
+            <AddToQuoteButton
+              productId={product.id}
+              slug={product.slug}
+              name={product.name}
+              price={product.price}
+              imageUrl={imageUrl}
+              className="justify-center text-center sm:flex-1"
+            />
             <a
               href={waHref}
               target="_blank"

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HeaderQuoteLink } from "@/components/layout/header-quote-link";
 import { SearchBar } from "@/components/search/search-bar";
 
 export function Header() {
@@ -22,9 +23,7 @@ export function Header() {
           <Link href="/buscar" className="text-muted-foreground hover:text-foreground transition-colors">
             Catalogo
           </Link>
-          <Link href="/cotizacion" className="text-muted-foreground hover:text-foreground transition-colors">
-            Cotizacion
-          </Link>
+          <HeaderQuoteLink />
         </nav>
       </div>
     </header>

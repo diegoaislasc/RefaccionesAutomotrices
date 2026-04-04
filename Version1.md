@@ -1,7 +1,7 @@
 # Refacciones Automotrices MVP — Version 1
 
 > Documento vivo. El agente lo lee al iniciar sesion y lo actualiza conforme avanza el trabajo.
-> Ultima actualizacion: 2026-04-03
+> Ultima actualizacion: 2026-04-03 (F3 cotizaciones)
 
 ## Estado general
 
@@ -10,11 +10,11 @@
 | F0 — Experimentacion Stitch | FRU-10 | Done | 2026-03-30 |
 | F1 — Fundamentos del Proyecto | FRU-11 | Done | 2026-03-30 |
 | F2 — Catalogo y Busqueda | FRU-12 | In Progress | — |
-| F3 — Sistema de Cotizaciones | FRU-13 | Backlog | — |
+| F3 — Sistema de Cotizaciones | FRU-13 | Done | 2026-04-03 |
 | F4 — Admin Panel Basico | FRU-14 | Backlog | — |
 | F5 — Pulido, SEO y Lanzamiento | FRU-15 | Backlog | — |
 
-**Fase activa:** F2 — Catalogo y Busqueda
+**Fase activa:** F4 — Admin Panel Basico (F3 cotizaciones entregada; aplicar migracion 003 en Supabase)
 
 ---
 
@@ -30,8 +30,8 @@
 | Auth | Supabase Auth (pendiente F4) | — |
 | Storage | Supabase Storage (pendiente F2) | — |
 | Hosting | Vercel | — |
-| Tests | Vitest (pendiente F2) + Playwright (pendiente F5) | — |
-| State | Zustand (pendiente F3) | — |
+| Tests | Vitest (`search-url`, `quote-validation`) + Playwright (pendiente F5) | — |
+| State | Zustand + persist (carrito cotizacion) | 5.x |
 
 ## Infraestructura
 
@@ -42,7 +42,7 @@
 | URL produccion | https://refaccionesautomotrices-pepe.vercel.app |
 | Supabase project | `beligivdpgnybboujazw` (us-east-1) |
 | Linear project | Refacciones Automotrices MVP (team: Fruteria) |
-| Variables de entorno | `.env.local` (gitignored) — `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` |
+| Variables de entorno | `.env.local` (gitignored) — `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`; opcional cotizacion/email: `RESEND_API_KEY`, `QUOTE_NOTIFY_EMAIL`, `RESEND_FROM` |
 
 ## Base de datos
 
@@ -61,7 +61,9 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 - Row Level Security (RLS) habilitado — politicas de lectura publica
 - Seed data: 4 categorias, 6 marcas, 10 productos, 11 compatibilidades
 
-**Tipos TypeScript:** `src/types/database.ts` (generados desde el esquema)
+**Migracion 003 (cotizaciones):** `supabase/migrations/003_quotes.sql` — tablas `quotes`, `quote_items`, enum `quote_status`, RLS insert anon/authenticated sin SELECT publico.
+
+**Tipos TypeScript:** `src/types/database.ts` (alineados al esquema + RPC + cotizaciones)
 
 ## Archivos clave
 
@@ -74,6 +76,14 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 | `src/components/layout/footer.tsx` | Footer (copyright, WhatsApp, telefono) |
 | `src/lib/supabase/client.ts` | Supabase browser client tipado |
 | `src/lib/supabase/server.ts` | Supabase server client con cookies |
+| `src/lib/supabase/service.ts` | Cliente service role (confirmacion cotizacion, bypass RLS) |
+| `src/stores/quote-cart-store.ts` | Carrito cotizacion (Zustand + localStorage) |
+| `src/app/actions/submit-quote.ts` | Server Action envio cotizacion |
+| `src/app/cotizacion/page.tsx` | Lista carrito + formulario cliente |
+| `src/app/confirmacion/page.tsx` | Folio y resumen (lee BD con service role) |
+| `src/lib/quote-validation.ts` | Validacion cliente + parse lineas JSON |
+| `src/lib/notify-quote.ts` | Email opcional via Resend |
+| `supabase/migrations/003_quotes.sql` | Esquema cotizaciones + RLS |
 | `src/types/database.ts` | Tipos TS generados del esquema |
 | `supabase/migrations/001_initial_schema.sql` | Esquema SQL inicial |
 | `supabase/migrations/002_search_rpc.sql` | RPC busqueda full-text + filtros |
@@ -154,24 +164,24 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 
 ---
 
-## F3 — Sistema de Cotizaciones
+## F3 — Sistema de Cotizaciones (DONE)
 
 **Objetivo:** Un usuario puede agregar productos a cotizacion y enviarla.
-**Duracion estimada:** 2-3 dias.
-**Criterio de salida:** Flujo completo buscar-agregar-cotizar-confirmar funcional. Owner notificado.
+**Criterio de salida:** Flujo buscar-agregar-cotizar-confirmar. Precios en BD al guardar. Email opcional (Resend).
+**Infra:** Aplicar `003_quotes.sql` en Supabase. Sin migracion, el envio falla. Confirmacion requiere `SUPABASE_SERVICE_ROLE_KEY` en servidor.
 
 | # | Subtarea | Linear | Estado |
 |---|----------|--------|--------|
-| 3.1 | Zustand store para carrito (localStorage) | FRU-40 | Backlog |
-| 3.2 | Boton "Agregar a Cotizacion" + badge header | FRU-41 | Backlog |
-| 3.3 | Pagina `/cotizacion` (lista items, totales) | FRU-42 | Backlog |
-| 3.4 | Migracion SQL: `quotes` + `quote_items` con RLS | FRU-43 | Backlog |
-| 3.5 | Formulario de envio cotizacion | FRU-44 | Backlog |
-| 3.6 | Server Action `submitQuote` | FRU-45 | Backlog |
-| 3.7 | Pagina `/confirmacion` | FRU-46 | Backlog |
-| 3.8 | Notificacion al negocio (email) | FRU-47 | Backlog |
-| 3.9 | Tests Zustand store + Server Action | FRU-48 | Backlog |
-| 3.10 | Commit + deploy Fase 3 | FRU-49 | Backlog |
+| 3.1 | Zustand store para carrito (localStorage) | FRU-40 | Done |
+| 3.2 | Boton "Agregar a Cotizacion" + badge header | FRU-41 | Done |
+| 3.3 | Pagina `/cotizacion` (lista items, totales) | FRU-42 | Done |
+| 3.4 | Migracion SQL: `quotes` + `quote_items` con RLS | FRU-43 | Done |
+| 3.5 | Formulario de envio cotizacion | FRU-44 | Done |
+| 3.6 | Server Action `submitQuote` | FRU-45 | Done |
+| 3.7 | Pagina `/confirmacion` | FRU-46 | Done |
+| 3.8 | Notificacion al negocio (email) | FRU-47 | Done |
+| 3.9 | Tests validacion cotizacion (Vitest) | FRU-48 | Done |
+| 3.10 | Commit + deploy Fase 3 | FRU-49 | Done |
 
 ---
 
@@ -221,3 +231,4 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 |-------|--------|
 | 2026-03-30 | Documento creado. F0 y F1 completadas. Vercel deployado con auto-deploy desde GitHub. |
 | 2026-04-03 | F2: `/buscar`, `/producto/[slug]`, SearchBar/useSearch, filtros, RPC 002, tests Vitest. Pendiente: aplicar migracion 002 en Supabase, seed masivo, deploy. |
+| 2026-04-03 | F3: carrito Zustand, `submitQuote`, `/cotizacion`, `/confirmacion`, migracion `003_quotes.sql`, badge header, Resend opcional, tests `quote-validation`. Aplicar 003 en Supabase y `SUPABASE_SERVICE_ROLE_KEY` en Vercel para confirmacion. |
