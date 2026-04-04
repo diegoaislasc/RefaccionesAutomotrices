@@ -150,7 +150,7 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 | 2.7 | Tabla compatibilidad vehicular | FRU-36 | Done |
 | 2.8 | Expandir seed data a 50-100 productos reales | FRU-37 | Backlog |
 | 2.9 | Tests Vitest (`parseSearchPageParams`) | FRU-38 | Done |
-| 2.10 | Commit + deploy Fase 2 | FRU-39 | Backlog |
+| 2.10 | Commit + deploy Fase 2 | FRU-39 | Done |
 
 ---
 
