@@ -3,7 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { CompatibilityTable } from "@/components/product/compatibility-table";
 import { AddToQuoteButton } from "@/components/quote/add-to-quote-button";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button-variants";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import type { Json } from "@/types/database";

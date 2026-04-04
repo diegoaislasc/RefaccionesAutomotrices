@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button-variants";
 import { useQuoteCartStore } from "@/stores/quote-cart-store";
 
 type AddToQuoteButtonProps = {

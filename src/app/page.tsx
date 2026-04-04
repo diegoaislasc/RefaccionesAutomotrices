@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/ca
 import { SearchBar } from "@/components/search/search-bar";
 import { ProductCard } from "@/components/product/product-card";
 import { createClient } from "@/lib/supabase/server";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
 
 const categoryIcons: Record<string, React.ReactNode> = {

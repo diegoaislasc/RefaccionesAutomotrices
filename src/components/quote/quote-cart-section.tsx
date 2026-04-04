@@ -3,7 +3,8 @@
 import { useActionState, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { submitQuote, type SubmitQuoteState } from "@/app/actions/submit-quote";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button-variants";
 import { Input } from "@/components/ui/input";
 import {
   useQuoteCartStore,
