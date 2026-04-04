@@ -2,7 +2,10 @@ import Link from "next/link";
 import { Wrench, Zap, Gauge, CircuitBoard } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { SearchBar } from "@/components/search/search-bar";
+import { ProductCard } from "@/components/product/product-card";
 import { createClient } from "@/lib/supabase/server";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const categoryIcons: Record<string, React.ReactNode> = {
   frenos: <Gauge className="h-8 w-8" />,
@@ -13,10 +16,30 @@ const categoryIcons: Record<string, React.ReactNode> = {
 
 export default async function Home() {
   const supabase = await createClient();
-  const { data: categories } = await supabase
-    .from("categories")
-    .select("*")
-    .order("sort_order");
+  const [{ data: categories }, { data: demoProducts }] = await Promise.all([
+    supabase.from("categories").select("*").order("sort_order"),
+    supabase
+      .from("products")
+      .select("*")
+      .like("slug", "demo-articulo-%")
+      .eq("is_active", true)
+      .order("slug", { ascending: true })
+      .limit(12),
+  ]);
+
+  const demoBrandIds = [
+    ...new Set(
+      (demoProducts ?? []).map((p) => p.brand_id).filter(Boolean) as string[]
+    ),
+  ];
+  let demoBrandMap = new Map<string, string>();
+  if (demoBrandIds.length) {
+    const { data: brandRows } = await supabase
+      .from("brands")
+      .select("id, name")
+      .in("id", demoBrandIds);
+    demoBrandMap = new Map(brandRows?.map((b) => [b.id, b.name]) ?? []);
+  }
 
   return (
     <>
@@ -67,6 +90,47 @@ export default async function Home() {
           ))}
         </div>
       </section>
+
+      {/* Vista previa catalogo (datos de muestra) */}
+      {demoProducts && demoProducts.length > 0 ? (
+        <section className="border-t bg-muted/30">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 className="text-2xl font-bold tracking-tight">
+                  Vista previa del catalogo
+                </h2>
+                <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
+                  Ejemplo con articulos de demostracion (articulo1, articulo2,
+                  …). Asi se vera el listado cuando tengas el inventario real.
+                </p>
+              </div>
+              <Link
+                href="/buscar"
+                className={cn(
+                  buttonVariants({ variant: "default" }),
+                  "mt-2 shrink-0 sm:mt-0"
+                )}
+              >
+                Ver catalogo en el buscador
+              </Link>
+            </div>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {demoProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  brandName={
+                    product.brand_id
+                      ? demoBrandMap.get(product.brand_id) ?? null
+                      : null
+                  }
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* CTA */}
       <section className="border-t bg-zinc-50">

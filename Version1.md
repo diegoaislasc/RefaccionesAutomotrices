@@ -1,7 +1,7 @@
 # Refacciones Automotrices MVP — Version 1
 
 > Documento vivo. El agente lo lee al iniciar sesion y lo actualiza conforme avanza el trabajo.
-> Ultima actualizacion: 2026-04-03 (F3 cotizaciones)
+> Ultima actualizacion: 2026-04-04 (demo catalogo cliente)
 
 ## Estado general
 
@@ -84,6 +84,7 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 | `src/lib/quote-validation.ts` | Validacion cliente + parse lineas JSON |
 | `src/lib/notify-quote.ts` | Email opcional via Resend |
 | `supabase/migrations/003_quotes.sql` | Esquema cotizaciones + RLS |
+| `supabase/migrations/004_demo_articulos_cliente.sql` | Seed demo 200 articulos (presentacion cliente) |
 | `src/types/database.ts` | Tipos TS generados del esquema |
 | `supabase/migrations/001_initial_schema.sql` | Esquema SQL inicial |
 | `supabase/migrations/002_search_rpc.sql` | RPC busqueda full-text + filtros |
@@ -232,3 +233,4 @@ Esquema aplicado: `supabase/migrations/001_initial_schema.sql`
 | 2026-03-30 | Documento creado. F0 y F1 completadas. Vercel deployado con auto-deploy desde GitHub. |
 | 2026-04-03 | F2: `/buscar`, `/producto/[slug]`, SearchBar/useSearch, filtros, RPC 002, tests Vitest. Pendiente: aplicar migracion 002 en Supabase, seed masivo, deploy. |
 | 2026-04-03 | F3: carrito Zustand, `submitQuote`, `/cotizacion`, `/confirmacion`, migracion `003_quotes.sql`, badge header, Resend opcional, tests `quote-validation`. Aplicar 003 en Supabase y `SUPABASE_SERVICE_ROLE_KEY` en Vercel para confirmacion. |
+| 2026-04-04 | Demo cliente: migracion `004_demo_articulos_cliente.sql` (200 productos articulo1..200, SKU DEMO-ART-*). Landing con seccion "Vista previa del catalogo" (12 tarjetas + enlace a `/buscar`). |
